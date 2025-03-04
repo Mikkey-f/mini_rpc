@@ -28,6 +28,33 @@
             <artifactId>rpc-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- Curator Framework dependency -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+        </dependency>
+
+        <!-- Curator Recipes dependency -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+        </dependency>
+
+        <!-- Curator Client dependency (Optional, for connecting with Zookeeper) -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+        </dependency>
+
+        <!-- Zookeeper dependency -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.7.0</version> <!-- 请根据需要使用 Zookeeper 的版本 -->
+        </dependency>
     </dependencies>
 
 </project>

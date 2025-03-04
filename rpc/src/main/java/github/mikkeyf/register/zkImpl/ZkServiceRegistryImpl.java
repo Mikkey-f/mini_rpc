@@ -3,6 +3,7 @@ package github.mikkeyf.register.zkImpl;
 import github.mikkeyf.register.ServiceRegistry;
 import lombok.extern.slf4j.Slf4j;
 import github.mikkeyf.register.zkImpl.util.CuratorUtils;
+import org.apache.curator.framework.CuratorFramework;
 
 import java.net.InetSocketAddress;
 
