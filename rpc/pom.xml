@@ -28,35 +28,6 @@
             <artifactId>rpc-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-        <!-- Curator Framework dependency -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>5.3.0</version>
-        </dependency>
-
-        <!-- Curator Recipes dependency -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>5.3.0</version>
-        </dependency>
-
-        <!-- Curator Client dependency (Optional, for connecting with Zookeeper) -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-client</artifactId>
-            <version>5.3.0</version>
-        </dependency>
-
-        <!-- Zookeeper dependency -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.7.0</version>
-        </dependency>
-
     </dependencies>
 
 </project>
