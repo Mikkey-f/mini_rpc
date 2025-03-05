@@ -1,3 +1,0 @@
-kyro=github.javaguide.serialize.kyro.KryoSerializer
-protostuff=github.javaguide.serialize.protostuff.ProtostuffSerializer
-hessian=github.javaguide.serialize.hessian.HessianSerializer

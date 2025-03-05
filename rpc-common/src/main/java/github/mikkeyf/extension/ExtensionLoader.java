@@ -102,7 +102,7 @@ public final class ExtensionLoader<T> {
                 classes = cachedClasses.get();
                 if (classes == null) {
                     classes = new HashMap<>();
-                    // load all extensions from our extensions directory
+                    // load all META_INF from our META_INF directory
                     loadDirectory(classes);
                     cachedClasses.set(classes);
                 }

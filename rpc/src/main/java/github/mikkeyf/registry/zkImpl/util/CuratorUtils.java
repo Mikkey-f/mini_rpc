@@ -1,4 +1,4 @@
-package github.mikkeyf.register.zkImpl.util;
+package github.mikkeyf.registry.zkImpl.util;
 
 import github.mikkeyf.enums.RpcConfigEnum;
 import github.mikkeyf.utils.PropertiesFileUtil;

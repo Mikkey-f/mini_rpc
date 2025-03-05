@@ -6,7 +6,7 @@ import github.mikkeyf.enums.ServiceRegistryEnum;
 import github.mikkeyf.exception.RpcException;
 import github.mikkeyf.extension.ExtensionLoader;
 import github.mikkeyf.provider.ServiceProvider;
-import github.mikkeyf.register.ServiceRegistry;
+import github.mikkeyf.registry.ServiceRegistry;
 import github.mikkeyf.remoting.socket.SocketRpcServer;
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,7 +46,7 @@ public class ZkServiceProviderImpl implements ServiceProvider {
             return;
         }
         registeredServices.add(rpcServiceName);
-        serviceMap.put(rpcServiceName, service);
+        serviceMap.put(rpcServiceName, rpcServiceEntity.getService());
         log.info("Add service: {} and interfaces:{}", rpcServiceName, rpcServiceEntity.getService().getClass().getInterfaces());
     }
 

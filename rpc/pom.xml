@@ -19,41 +19,51 @@
 
     <dependencies>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
             <groupId>github.mikkeyf</groupId>
             <artifactId>rpc-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
-        <!-- Curator Framework dependency -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>${kryo.version}</version>
+        </dependency>
+        <!--zookeeper-->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+            <version>${curator-version}</version>
         </dependency>
-
-        <!-- Curator Recipes dependency -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+            <version>${curator-version}</version>
         </dependency>
-
-        <!-- Curator Client dependency (Optional, for connecting with Zookeeper) -->
         <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-client</artifactId>
-            <version>5.3.0</version> <!-- 请根据需要使用最新版本 -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
         </dependency>
-
-        <!-- Zookeeper dependency -->
+        <!-- protostuff -->
         <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.7.0</version> <!-- 请根据需要使用 Zookeeper 的版本 -->
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>${protostuff.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>${protostuff.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>${hessian.version}</version>
         </dependency>
     </dependencies>
 

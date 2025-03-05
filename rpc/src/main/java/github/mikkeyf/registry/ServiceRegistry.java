@@ -1,4 +1,4 @@
-package github.mikkeyf.register;
+package github.mikkeyf.registry;
 
 import github.mikkeyf.extension.SPI;
 
@@ -13,7 +13,7 @@ import java.net.InetSocketAddress;
 public interface ServiceRegistry {
 
     /**
-     * register service
+     * registry service
      * @param rpcServiceName rpc service name
      * @param inetSocketAddress service address
      */

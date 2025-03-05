@@ -1,8 +1,8 @@
-package github.mikkeyf.register.zkImpl;
+package github.mikkeyf.registry.zkImpl;
 
-import github.mikkeyf.register.ServiceRegistry;
+import github.mikkeyf.registry.ServiceRegistry;
 import lombok.extern.slf4j.Slf4j;
-import github.mikkeyf.register.zkImpl.util.CuratorUtils;
+import github.mikkeyf.registry.zkImpl.util.CuratorUtils;
 import org.apache.curator.framework.CuratorFramework;
 
 import java.net.InetSocketAddress;
