@@ -1,4 +1,4 @@
-package github.mikkeyf.remoting.socket;
+package github.mikkeyf.remoting.transport.socket;
 
 import github.mikkeyf.entity.RpcServiceEntity;
 import github.mikkeyf.factory.SingletonFactory;

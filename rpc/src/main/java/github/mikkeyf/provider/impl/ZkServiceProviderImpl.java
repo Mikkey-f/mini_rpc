@@ -7,7 +7,7 @@ import github.mikkeyf.exception.RpcException;
 import github.mikkeyf.extension.ExtensionLoader;
 import github.mikkeyf.provider.ServiceProvider;
 import github.mikkeyf.registry.ServiceRegistry;
-import github.mikkeyf.remoting.socket.SocketRpcServer;
+import github.mikkeyf.remoting.transport.socket.SocketRpcServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;

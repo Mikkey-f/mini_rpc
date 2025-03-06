@@ -1,7 +1,7 @@
 package github.mikkeyf;
 
 import github.mikkeyf.entity.RpcServiceEntity;
-import github.mikkeyf.remoting.socket.SocketRpcServer;
+import github.mikkeyf.remoting.transport.socket.SocketRpcServer;
 import github.mikkeyf.serviceImpl.HelloServiceImpl;
 
 /**
