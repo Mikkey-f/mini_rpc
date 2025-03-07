@@ -1,4 +1,4 @@
-package github.mikkeyf.provider.impl;
+package github.mikkeyf.provider.zkImpl;
 
 import github.mikkeyf.entity.RpcServiceEntity;
 import github.mikkeyf.enums.RpcErrorMessageEnum;

@@ -96,7 +96,7 @@ public final class CuratorUtils {
     }
 
     public static CuratorFramework getZkClient() {
-        // check if user has set zk address
+        // check if user has set zkImpl address
         Properties properties = PropertiesFileUtil.readPropertiesFile(RpcConfigEnum.RPC_CONFIG_PATH.getPropertyValue());
         String zookeeperAddress = properties != null && properties.getProperty(RpcConfigEnum.ZK_ADDRESS.getPropertyValue()) != null ? properties.getProperty(RpcConfigEnum.ZK_ADDRESS.getPropertyValue()) : DEFAULT_ZOOKEEPER_ADDRESS;
         // if zkClient has been started, return directly

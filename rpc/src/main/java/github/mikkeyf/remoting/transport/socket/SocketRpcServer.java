@@ -3,7 +3,7 @@ package github.mikkeyf.remoting.transport.socket;
 import github.mikkeyf.entity.RpcServiceEntity;
 import github.mikkeyf.factory.SingletonFactory;
 import github.mikkeyf.provider.ServiceProvider;
-import github.mikkeyf.provider.impl.ZkServiceProviderImpl;
+import github.mikkeyf.provider.zkImpl.ZkServiceProviderImpl;
 import github.mikkeyf.utils.threadpool.ThreadPoolFactoryUtil;
 import lombok.extern.slf4j.Slf4j;
 
