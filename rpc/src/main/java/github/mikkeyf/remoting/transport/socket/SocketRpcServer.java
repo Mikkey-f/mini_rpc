@@ -42,7 +42,7 @@ public class SocketRpcServer {
             Socket socket;
             while ((socket = serverSocket.accept()) != null) {
                 log.info("client connected [{}]", socket.getInetAddress());
-                // 还需要实现客户端接受
+                threadPool.execute(new SocketRpcRequestHandlerRunnable(socket));
             }
         } catch (IOException e) {
             log.error("occur IOException:", e);
