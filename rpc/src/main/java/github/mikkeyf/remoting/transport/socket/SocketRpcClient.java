@@ -2,6 +2,7 @@ package github.mikkeyf.remoting.transport.socket;
 
 import github.mikkeyf.discovery.ServiceDiscovery;
 import github.mikkeyf.enums.ServiceDiscoveryEnum;
+import github.mikkeyf.exception.RpcException;
 import github.mikkeyf.extension.ExtensionLoader;
 import github.mikkeyf.provider.ServiceProvider;
 import github.mikkeyf.remoting.dto.RpcRequest;
@@ -38,7 +39,7 @@ public class SocketRpcClient implements RpcRequestTransport {
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             return in.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            //throw new RpcException("调用服务失败:", e);
+            throw new RpcException("调用服务失败:", e);
         }
     }
 }
