@@ -1,8 +1,13 @@
 package github.mikkeyf.proxy;
 
 import github.mikkeyf.entity.RpcServiceEntity;
+import github.mikkeyf.enums.RpcErrorMessageEnum;
+import github.mikkeyf.enums.RpcResponseEnum;
+import github.mikkeyf.exception.RpcException;
 import github.mikkeyf.remoting.dto.RpcRequest;
+import github.mikkeyf.remoting.dto.RpcResponse;
 import github.mikkeyf.remoting.transport.RpcRequestTransport;
+import github.mikkeyf.remoting.transport.socket.SocketRpcClient;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,7 +71,29 @@ public class RpcClientProxy implements InvocationHandler {
                 .parameterTypes(method.getParameterTypes())
                 .requestId(UUID.randomUUID().toString())
                 .build();
+        RpcResponse<Object> rpcResponse = null;
+        if (rpcRequestTransport instanceof SocketRpcClient) {
+            rpcResponse = (RpcResponse<Object>) rpcRequestTransport.sendRpcRequestAndGetResult(rpcRequest);
+        }
+        this.check(rpcResponse, rpcRequest);
+        return rpcResponse.getData();
+    }
 
-        return null;
+    private void check(RpcResponse rpcResponse, RpcRequest rpcRequest) {
+        if (rpcResponse == null) {
+            throw new RpcException(RpcErrorMessageEnum.SERVICE_INVOCATION_FAILURE, INTERFACE_NAME + ":" + rpcRequest.getInterfaceName());
+        }
+
+        /**
+         * this response is not this request. Not match
+         */
+        if (!rpcRequest.getRequestId().equals(rpcResponse.getRequestId())) {
+            throw new RpcException(RpcErrorMessageEnum.REQUEST_NOT_MATCH_RESPONSE, INTERFACE_NAME + ":" + rpcRequest.getInterfaceName());
+        }
+
+        if (rpcResponse.getCode() == null || !rpcResponse.getCode().equals(RpcResponseEnum.SUCCESS.getCode())) {
+            throw new RpcException(RpcErrorMessageEnum.SERVICE_INVOCATION_FAILURE, INTERFACE_NAME + ":" + rpcRequest.getInterfaceName());
+        }
+
     }
 }
