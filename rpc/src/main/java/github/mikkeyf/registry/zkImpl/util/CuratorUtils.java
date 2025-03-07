@@ -45,6 +45,8 @@ public final class CuratorUtils {
     public static void createPersistentNode(CuratorFramework zkClient, String path) {
         try {
             if (REGISTERED_PATH_SET.contains(path) || zkClient.checkExists().forPath(path) != null) {
+//                log.info("{}", REGISTERED_PATH_SET.contains(path));
+//                log.info("{}", zkClient.checkExists().forPath(path) != null);
                 log.info("The node already exists. The node is:[{}]", path);
             } else {
                 //eg: /my-rpc/github.javaguide.HelloService/127.0.0.1:9999

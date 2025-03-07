@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 public enum ServiceRegistryEnum {
-    ZK("zkImpl");
+    ZK("zk");
     String name;
 
     ServiceRegistryEnum(String name) {
