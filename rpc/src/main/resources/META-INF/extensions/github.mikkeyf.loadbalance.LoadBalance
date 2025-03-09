@@ -1,2 +1,2 @@
-loadBalance=github.mikkeyf.loadbalance.loadbalancer.RandomLoadBalance
+#loadBalance=github.mikkeyf.loadbalance.loadbalancer.RandomLoadBalance
 loadBalance=github.mikkeyf.loadbalance.loadbalancer.ConsistentHashLoadBalance
