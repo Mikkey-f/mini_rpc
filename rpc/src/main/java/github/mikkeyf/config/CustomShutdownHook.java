@@ -1,12 +1,9 @@
 package github.mikkeyf.config;
 
 import github.mikkeyf.registry.zkImpl.util.CuratorUtils;
-import github.mikkeyf.remoting.netty.server.NettyRpcServer;
+import github.mikkeyf.remoting.transport.netty.server.NettyRpcServer;
 import github.mikkeyf.utils.threadpool.ThreadPoolFactoryUtil;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.CuratorFrameworkFactory;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

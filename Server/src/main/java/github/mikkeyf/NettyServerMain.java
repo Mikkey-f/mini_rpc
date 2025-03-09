@@ -1,7 +1,7 @@
 package github.mikkeyf;
 
 import github.mikkeyf.annotation.RpcScan;
-import github.mikkeyf.proxy.RpcClientProxy;
+import github.mikkeyf.remoting.transport.netty.server.NettyRpcServer;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -12,6 +12,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class NettyServerMain {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(NettyServerMain.class);
-         nettyRpcServer = applicationContext.getBean("nettyRpcServer");
+        NettyRpcServer nettyRpcServer = (NettyRpcServer) applicationContext.getBean("nettyRpcServer");
     }
 }
