@@ -9,6 +9,7 @@ import github.mikkeyf.utils.RuntimeUtil;
 import github.mikkeyf.utils.threadpool.ThreadPoolFactoryUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
@@ -44,30 +45,41 @@ public class NettyRpcServer {
 
     @SneakyThrows
     public void start() {
-        // service a jvm shutdown hook
-        CustomShutdownHook.getInstance().clearAll();
-        String hostAddress = InetAddress.getLocalHost().getHostAddress();
-        NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
-        DefaultEventExecutorGroup serviceHandlerGroup = new DefaultEventExecutorGroup(
-                RuntimeUtil.getCpus() * 2,
-                ThreadPoolFactoryUtil.createThreadFactory("service-handler-group", false)
-        );
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(bossGroup, workerGroup)
-                .channel(NioServerSocketChannel.class)
-                .childOption(ChannelOption.SO_KEEPALIVE, true)
-                .childOption(ChannelOption.TCP_NODELAY, true)
-                .option(ChannelOption.SO_BACKLOG, 128)
-                .handler(new LoggingHandler(LogLevel.INFO))
-                .childHandler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        ChannelPipeline pipeline = socketChannel.pipeline();
-                        pipeline.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
-                        pipeline.addLast(serviceHandlerGroup, new NettyRpcServerHandler());
-                    }
-                });
 
+            // service a jvm shutdown hook
+            CustomShutdownHook.getInstance().clearAll();
+            String hostAddress = InetAddress.getLocalHost().getHostAddress();
+            NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
+            NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+            DefaultEventExecutorGroup serviceHandlerGroup = new DefaultEventExecutorGroup(
+                    RuntimeUtil.getCpus() * 2,
+                    ThreadPoolFactoryUtil.createThreadFactory("service-handler-group", false)
+            );
+        try {
+            ServerBootstrap serverBootstrap = new ServerBootstrap();
+            serverBootstrap.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    .childOption(ChannelOption.TCP_NODELAY, true)
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            ChannelPipeline pipeline = socketChannel.pipeline();
+                            pipeline.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
+                            pipeline.addLast(serviceHandlerGroup, new NettyRpcServerHandler());
+                        }
+                    });
+            ChannelFuture sync = serverBootstrap.bind(hostAddress, Port).sync();
+            sync.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            log.error("occur exception when start server:", e);
+        } finally {
+            log.error("shutdown bossGroup and workerGroup");
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+            serviceHandlerGroup.shutdownGracefully();
+        }
     }
 }

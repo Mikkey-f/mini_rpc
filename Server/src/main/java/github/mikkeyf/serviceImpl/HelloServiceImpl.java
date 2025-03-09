@@ -3,7 +3,6 @@ package github.mikkeyf.serviceImpl;
 import github.mikkeyf.Hello;
 import github.mikkeyf.HelloService;
 import github.mikkeyf.annotation.RpcService;
-import io.protostuff.Rpc;
 import lombok.extern.slf4j.Slf4j;
 
 /**
