@@ -62,4 +62,22 @@ public class ThreadPoolFactoryUtil {
         return Executors.defaultThreadFactory();
     }
 
+    /**
+     * shutdown all threadPoll
+     */
+    public static void shutdownAllThreadPools() {
+        log.info("shutdown all thread pools");
+        THREAD_POOLS.entrySet().parallelStream().forEach(entry -> {
+            ExecutorService executorService = entry.getValue();
+            executorService.shutdown();
+            log.info("shutdown thread pool [{}],[{}]", entry.getKey(), executorService.isShutdown());
+            try {
+                executorService.awaitTermination(10, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                log.error("Thread pool awaitTermination interrupted", e);
+                executorService.shutdownNow();
+            }
+        });
+    }
+
 }
