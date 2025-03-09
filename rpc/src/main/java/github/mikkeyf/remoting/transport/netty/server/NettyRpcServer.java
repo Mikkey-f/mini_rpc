@@ -67,7 +67,7 @@ public class NettyRpcServer {
                         pipeline.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
                         pipeline.addLast(serviceHandlerGroup, new NettyRpcServerHandler());
                     }
-                })
+                });
 
     }
 }
