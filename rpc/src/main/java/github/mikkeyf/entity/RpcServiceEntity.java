@@ -16,6 +16,7 @@ public class RpcServiceEntity {
     /**
      * service version
      * Maybe your service will be changed
+        *
      */
     private String version = "";
 
